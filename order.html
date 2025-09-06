@@ -1,0 +1,49 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Place Order – Qurashi SMM</title>
+<link rel="stylesheet" href="assets/style.css">
+</head><body>
+<header class="topbar">
+  <div class="brand">Qurashi SMM</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a class="whatsapp" href="https://wa.me/03180876452" target="_blank">WhatsApp</a>
+  </nav>
+</header>
+
+<section class="container card">
+  <h2>Place Your Order</h2>
+  <form id="orderForm">
+    <label>Service</label>
+    <select id="service"></select>
+
+    <label>Quantity</label>
+    <input type="number" id="qty" min="10" step="10" value="100" required>
+
+    <label>Link/Username</label>
+    <input type="text" id="link" placeholder="Paste your post/profile link" required>
+
+    <div class="total">Total: <b id="total">₨ 0</b></div>
+    <button type="submit" class="btn">Proceed</button>
+  </form>
+  <p class="muted">Payments: JazzCash <b>03354370203</b>. Send screenshot on WhatsApp.</p>
+</section>
+
+<script src="assets/services.js"></script>
+<script>
+const sel=document.getElementById('service'), qty=document.getElementById('qty'), total=document.getElementById('total');
+SERVICES.forEach(s=>{const o=document.createElement('option');o.value=s.id;o.textContent=`${s.name} — ₨ ${s.price} / 1k`;sel.appendChild(o);});
+function recalc(){
+  const s=SERVICES.find(x=>x.id===sel.value); const q=parseInt(qty.value||0,10);
+  const unit = s ? s.price : 0; const amount = Math.ceil(q/1000) * unit;
+  total.textContent = `₨ ${amount}`;
+}
+sel.onchange=recalc; qty.oninput=recalc; recalc();
+
+document.getElementById('orderForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  alert('Order captured! Pay via JazzCash 03354370203 and send proof on WhatsApp.');
+});
+</script>
+</body></html>
