@@ -1,0 +1,56 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Qurashi SMM – Best Prices in PKR</title>
+<link rel="stylesheet" href="assets/style.css">
+</head><body>
+<header class="topbar">
+  <div class="brand">Qurashi SMM</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="order.html">Order</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a class="whatsapp" href="https://wa.me/03180876452" target="_blank">WhatsApp</a>
+    <a class="login" href="index.html#login">Login</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Fast SMM Services in ₨ PKR</h1>
+  <p>JazzCash: <b>03354370203</b> — Proof after payment, instant processing.</p>
+  <a class="cta" href="#pricing">View Pricing</a>
+</section>
+
+<section id="pricing" class="container">
+  <h2>Popular Services</h2>
+  <div id="pricingGrid" class="grid"></div>
+</section>
+
+<section id="login" class="container card">
+  <h2>Login</h2>
+  <form id="loginForm">
+    <input type="email" id="email" placeholder="Email" required>
+    <input type="password" id="password" placeholder="Password" required>
+    <button type="submit">Login</button>
+  </form>
+  <small>Admin: akkiller612@gmail.com / admin123</small>
+</section>
+
+<footer class="footer">
+  <span>© 2025 Qurashi SMM • PKR (₨)</span>
+</footer>
+
+<script src="assets/services.js"></script>
+<script src="assets/app.js"></script>
+<script>
+// build pricing cards from services.js
+const grid=document.getElementById('pricingGrid');
+SERVICES.slice(0,12).forEach(s=>{
+  const el=document.createElement('div'); el.className='card';
+  el.innerHTML=`<h3>${s.name}</h3>
+  <p class="muted">${s.platform}</p>
+  <div class="price">₨ ${s.price}</div>
+  <a class="btn" href="order.html?service=${encodeURIComponent(s.id)}">Order</a>`;
+  grid.appendChild(el);
+});
+</script>
+</body></html>
